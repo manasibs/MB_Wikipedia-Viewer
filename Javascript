@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  
+  //get the search term
+  $("#search").click(function() {
+    var searchText = $("#searchTerm").val();
+alert(searchText);
+  });
+                     
   var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=marie+curie&limit=10&suggest=1";
   $.ajax({
     url: wikiAPI,
