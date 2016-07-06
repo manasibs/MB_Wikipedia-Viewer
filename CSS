@@ -1,2 +1,31 @@
 /* -- import Bootstrap v3 ----------------------------- */
+
 @import "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css";
+
+/*.nopadding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left:-30px !important;
+    margin-right:-30px  !important;
+  }
+}*/
+body{
+  background-image:url(
+    
+    "http://cache1.asset-cache.net/xd/461176876.jpg?v=1&c=IWSAsset&k=2&d=62CA815BFB1CE4804DEF7067D54E8A902B6A5D266AEA58DBA4256C1B690B04D6347A4096EB95B7F8");
+    
+    /*('http://cache4.asset-cache.net/xd/477777220.jpg?v=1&c=IWSAsset&k=2&d=62CA815BFB1CE48063F0FD44ABC28DA84E7679DD01108BC6347A87B6F6F36E97C54D55F575356FB7');*/
+  background-size:cover;
+}
+
+.title{
+  color:white;
+}
+
+.searchBox{
+  margin-top:5rem;
+  
+  width:20rem;
+  
+}
