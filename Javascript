@@ -1,0 +1,26 @@
+$(document).ready(function() {
+  var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=marie+curie&limit=10&suggest=1";
+  $.ajax({
+    url: wikiAPI,
+    data: {},
+    dataType: 'jsonp',
+    jsonp:'callback',
+    success: function(data) {
+
+     console.log(data);
+      //alert(data);
+      getWiki(data);
+    },
+    error: function(err) {
+      alert(err);
+    }
+  });
+  
+});
+
+function getWiki(data){
+  //console.log("getwiki"+data);
+ console.log(JSON.stringify(data[0]));
+  console.log(JSON.stringify(data[1][1]));
+  
+}
