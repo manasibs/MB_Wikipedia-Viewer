@@ -1,5 +1,34 @@
+
 $(document).ready(function() {
-  var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=marie+curie&limit=10&suggest=1";
+  
+  //if random button is pressed
+  $("#random").click(function() {
+    
+});
+  
+  //get the search term
+  $("#search").click(function() {
+  var valid = false;
+  var searchText = $("#searchTerm").val();
+  if (searchText == '') {
+    $("#valid-term").removeClass('hide');
+    $("#valid-term").css("background","	#C0C0C0");
+    valid = false;
+    $("#searchTerm").css("border","4px solid #ff0000");
+    $("#searchTerm").focus();
+  }
+  else{
+    $("#valid-term").addClass('hide');
+    valid = true;
+  }
+ 
+ if(valid === true){
+   
+   //change textbox border to black
+   $("#searchTerm").css("border","2px solid #000000");
+   
+    var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+searchText+"&limit=10&suggest=1";
+  
   $.ajax({
     url: wikiAPI,
     data: {},
@@ -15,12 +44,41 @@ $(document).ready(function() {
       alert(err);
     }
   });
+
+ }  
+  });
+                     
+  
   
 });
 
 function getWiki(data){
-  //console.log("getwiki"+data);
+  var j;
+  var idArticle;
+  var idText;
+  console.log("getwiki"+data);
  console.log(JSON.stringify(data[0]));
   console.log(JSON.stringify(data[1][1]));
   
+  for(i=0;i<data[1].length;i++){
+   console.log(JSON.stringify(data[1][i]));
+   j=i+1;
+    console.log(j);
+    idArticle="article"+j;
+    idText="text"+j;
+    document.getElementById(idArticle).innerHTML=JSON.stringify(data[1][i]);
+document.getElementById(idText).innerHTML=JSON.stringify(data[2][i]);    
+    if (JSON.stringify(data[1][i])!=" " && JSON.stringify(data[2][i])!=" " ){
+      console.log(JSON.stringify(data[1][i]));
+      $('#box'+j).show();
+      
+      //justify text
+      $(".box").css("text-align","justify");
+    }
+    //display the div background
+    
+    
+  }
+  //$('.box').show();
 }
+
