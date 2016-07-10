@@ -1,5 +1,109 @@
 <head>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js">
   </script>
 </head>
+
+<body>
+  <div class="container-fluid">
+    <div class="background">
+      <h1 class="text-center title">Wikipedia Viewer</h1>
+      <br>
+
+      <form>
+        <div class="row nopadding ">
+          <div class="">
+            <input type="text" class="form-control searchBox center-block" id="searchTerm" placeholder="Enter search term" name="sTerm" required="true">
+
+          </div>
+          <div class="text-center col-md-2 col-md-offset-5">
+            <div id="valid-term" class="hide">Enter a valid Search Term</div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6 col-xs-6 text-right">
+            <!--"col-sm-1 col-sm-offset-3">-->
+            <button class="btn btn-info" type="button" id="search"><i class="fa fa-search"> </i></button>
+
+          </div>
+
+
+          <div class="col-md-6 col-xs-6 text-left">
+            <!--"col-sm-1">-->
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"> <button class="btn btn-info" type="button" id="random"><i class="fa fa-random" aria-hidden="true"></i></a> 
+          </button>
+          </div>
+        </div>
+
+
+      </form>
+      <br><br>
+      <!--<div class="box" id="box1">
+      <div id="article1"></div>
+      <div id="text1"></div>
+      </div>-->
+      <div class="box" id="box1">
+        <a id="article1" href="" target="_blank"></a>
+        <br>
+        <a id="text1" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box2">
+        <a id="article2" href="" target="_blank"></a>
+        <br>
+        <a id="text2" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box3">
+        <a id="article3" href="" target="_blank"></a>
+        <br>
+        <a id="text3" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box4">
+        <a id="article4" href="" target="_blank"></a>
+        <br>
+        <a id="text4" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box5">
+        <a id="article5" href="" target="_blank"></a>
+        <br>
+        <a id="text5" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box6">
+        <a id="article6" href="" target="_blank"></a>
+        <br>
+        <a id="text6" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box7">
+        <a id="article7" href="" target="_blank"></a>
+        <br>
+        <a id="text7" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box8">
+        <a id="article8" href="" target="_blank"></a>
+        <br>
+        <a id="text8" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box" id="box9">
+        <a id="article9" href="" target="_blank"></a>
+        <br>
+        <a id="text9" href="" target="_blank"></a>
+      </div>
+      <br>
+      <div class="box " id="box10">
+        <a id="article10" href="" target="_blank"></a>
+        <br>
+        <a id="text10" href="" target="_blank"></a>
+      </div>
+      <br>
+
+    </div>
+  </div>
+</body>
