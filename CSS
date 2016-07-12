@@ -1,0 +1,78 @@
+/* -- import Bootstrap v3 ----------------------------- */
+
+@import "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css";
+
+/*.nopadding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left:-30px !important;
+    margin-right:-30px  !important;
+  }
+}*/
+/*body{
+  background-image:url(
+    
+    "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikipedia-logo-en-big.png");
+    
+    /*('http://cache4.asset-cache.net/xd/477777220.jpg?v=1&c=IWSAsset&k=2&d=62CA815BFB1CE48063F0FD44ABC28DA84E7679DD01108BC6347A87B6F6F36E97C54D55F575356FB7');*/
+/*  background-size:cover;
+  background-attachment:fixed;
+}*/
+
+.title{
+  color:black;
+  font-weight:700;
+}
+
+.searchBox{
+  margin-top:5rem;
+  border:2px solid #000000;
+  width:20rem;
+  
+}
+
+.btn{
+  background-color:teal;
+  border:none;
+ 
+}
+
+.fa{
+ color:black;
+  
+}
+
+
+
+div.background {
+  
+  height:61rem;
+  background-attachment:fixed;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/5/53/Wikipedia-logo-en-big.png") ;
+  background-size:cover;
+    
+  opacity: 0.65;
+  blur:10px;
+  filter: blur(10px);
+    filter: alpha(opacity=65); /* For IE8 and earlier */
+}
+
+
+
+.box{
+  padding:3rem 2rem 3rem 2rem;
+   background:teal;
+  color:white;
+  border-radius: 20rem 20rem;
+  display:none;
+  cursor:pointer;
+    }
+
+a{
+  color:white;
+}
+.hide {
+  display: none;
+}
+#valid-term { color: red; }
