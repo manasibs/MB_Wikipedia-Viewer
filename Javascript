@@ -1,84 +1,186 @@
-
+var linkArr=[];
 $(document).ready(function() {
+
+  wikiAction();
   
-  //if random button is pressed
-  $("#random").click(function() {
-    
+  //if any box is clicked
+  clickBox();
 });
-  
+
+//encapsulate in function for ease of calling
+function wikiAction() {
+
+  //console.log("enter pressed in function");
+
+  /*//initialize message text
+  $("#valid-term").addClass('hide');*/
+
+  //hide boxes
+
   //get the search term
   $("#search").click(function() {
+
+    wikiSearch();
+
+  });
+}
+
+function getWiki(data) {
+  var j;
+  var idArticle;
+  var idText;
+  var idBox;
+debugger
+  //to display message if no results are found
+  console.log("length" + data[1].length);
+  if (data[1].length == 0) {
+    $("#valid-term").removeClass('hide');
+    $("#valid-term").text("No results found");
+    $("#valid-term").css("background", "	#C0C0C0");
+    $("#searchTerm").focus();
+
+    //to hide boxes from previous results
+    clearBoxes(data);
+
+  }
+
+  for (i = 0; i < data[1].length; i++) {
+
+    j = i + 1;
+
+    idArticle = "article" + j;
+    idText = "text" + j;
+    idBox = "#box" + j;
+    document.getElementById(idArticle).innerHTML = JSON.stringify(data[1][i]);
+    document.getElementById(idText).innerHTML = JSON.stringify(data[2][i]);
+    //document.getElementById(idArticle).href = data[3][i];
+    //document.getElementById(idText).href = data[3][i];
+    
+    //make entire div clickable
+   /* $(idBox).click(function(e) {
+      alert(data[0]);
+      var answerid = $(this).attr('id');
+      
+      //alert(answerid);
+      //var str=string(answerid2);
+      //str.replace("box", "");
+      var boxNum = answerid.replace("box", "");
+      boxNum = boxNum - 1;
+      //alert(str);
+      //alert(boxNum);
+
+      window.open(data[3][boxNum], '_blank');
+
+    });*/
+
+    // document.getElementById(idArticle).href = data[3][i];
+    //document.getElementById(idText).href = data[3][i];
+
+    if (JSON.stringify(data[1][i]) != " " && JSON.stringify(data[2][i]) != " ") {
+
+      $('#box' + j).show();
+      //$('#box'+j).css("display","block");
+      console.log("show");
+      //justify text
+      $(".box").css("text-align", "justify");
+
+    }
+
+  }
+  //$('.box').show();
+
+  //to hide boxes from previous results
+  clearBoxes(data);
+
+}
+
+//to hide boxes from previous results
+function clearBoxes(data) {
+
+  for (i = (data[1].length + 1); i <= 10; i++) {
+    console.log("hide");
+    $('#box' + i).hide();
+
+  }
+data=[];
+}
+
+
+function wikiSearch() {
   var valid = false;
   var searchText = $("#searchTerm").val();
   if (searchText == '') {
     $("#valid-term").removeClass('hide');
-    $("#valid-term").css("background","	#C0C0C0");
+    $("#valid-term").css("background", "	#C0C0C0");
+    $("#valid-term").text("Enter search text");
     valid = false;
-    $("#searchTerm").css("border","4px solid #ff0000");
+    $("#searchTerm").css("border", "4px solid #ff0000");
     $("#searchTerm").focus();
-  }
-  else{
+
+    //to hide boxes from previous results
+    var data = [
+      [],
+      []
+    ];
+    clearBoxes(data);
+
+  } else {
     $("#valid-term").addClass('hide');
     valid = true;
   }
- 
- if(valid === true){
-   
-   //change textbox border to black
-   $("#searchTerm").css("border","2px solid #000000");
-   
-    var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+searchText+"&limit=10&suggest=1";
-  
-  $.ajax({
-    url: wikiAPI,
-    data: {},
-    dataType: 'jsonp',
-    jsonp:'callback',
-    success: function(data) {
 
-     console.log(data);
-      //alert(data);
-      getWiki(data);
-    },
-    error: function(err) {
-      alert(err);
-    }
-  });
+  if (valid === true) {
 
- }  
-  });
-                     
-  
-  
-});
+    //change textbox border to black
+    $("#searchTerm").css("border", "2px solid #000000");
 
-function getWiki(data){
-  var j;
-  var idArticle;
-  var idText;
-  console.log("getwiki"+data);
- console.log(JSON.stringify(data[0]));
-  console.log(JSON.stringify(data[1][1]));
-  
-  for(i=0;i<data[1].length;i++){
-   console.log(JSON.stringify(data[1][i]));
-   j=i+1;
-    console.log(j);
-    idArticle="article"+j;
-    idText="text"+j;
-    document.getElementById(idArticle).innerHTML=JSON.stringify(data[1][i]);
-document.getElementById(idText).innerHTML=JSON.stringify(data[2][i]);    
-    if (JSON.stringify(data[1][i])!=" " && JSON.stringify(data[2][i])!=" " ){
-      console.log(JSON.stringify(data[1][i]));
-      $('#box'+j).show();
-      
-      //justify text
-      $(".box").css("text-align","justify");
-    }
-    //display the div background
-    
-    
+    var wikiAPI = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + searchText + "&limit=10&suggest=1";
+
+    $.ajax({
+      url: wikiAPI,
+      data: {},
+      dataType: 'jsonp',
+      jsonp: 'callback',
+      success: function(data) {
+
+        console.log(data);
+        //alert(data);
+        getWiki(data);
+        
+        //set links in array so it is accessible in clickBox fuction
+        linkArr = data[3];
+      },
+      error: function(err) {
+        alert(err);
+      }
+    });
   }
-  //$('.box').show();
 }
 
+//capture Enter key
+$(document).keydown(function(event) {
+  if (event.which === 13) {
+
+    //initialize message text
+    $("#valid-term").addClass('hide');
+
+    console.log("enter pressed");
+    wikiSearch();
+
+  }
+});
+
+function clickBox(){
+  //make entire div clickable
+    $(".box").click(function(e) {
+      
+      var answerid = $(this).attr('id');
+      
+      var boxNum = answerid.replace("box", "");
+      boxNum = boxNum - 1;
+      
+  window.open(linkArr[boxNum], '_blank');
+
+        
+    });
+}
