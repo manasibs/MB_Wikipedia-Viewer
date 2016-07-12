@@ -58,13 +58,20 @@ div.background {
     filter: alpha(opacity=65); /* For IE8 and earlier */
 }
 
+
+
 .box{
   padding:3rem 2rem 3rem 2rem;
-    background-color:teal;
+   background:teal;
   color:white;
   border-radius: 20rem 20rem;
   display:none;
+  cursor:pointer;
     }
+
+a{
+  color:white;
+}
 .hide {
   display: none;
 }
